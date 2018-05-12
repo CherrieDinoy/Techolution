@@ -6,6 +6,11 @@ public class ConservativeSum {
     static int countConsecutive(int N)
     {
         int count = 0;
+
         return count;
+    }
+
+    public static void main(String[] args) {
+        int N = 5;
     }
 }
