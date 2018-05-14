@@ -3,51 +3,40 @@
  */
 import java.util.*;
 public class PsychometricTesting {
-    static int[] jobOffers(int[] scores, int[] lowerLimits, int[] upperLimits) {
-        int[] output = new int[lowerLimits.length];
-        Arrays.sort(scores);
+    public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int[] scores = {6,3,5,3,6,2,8};
+		int[] lowerLimits = {2,5,7};
+		int[] upperLimits = {4,6};
+		
+		jobOffers(scores, lowerLimits, upperLimits);
+	}
+	
+	public static int[] jobOffers(int[] scores, int[] lowerLimits, int[] upperLimits) {
+		Arrays.sort(scores); //max number to the last;
+		int offers[] = new int[lowerLimits.length];
+		
+		System.out.println();
+		
+		for(int i=0;i<scores.length;i++) {
+			for(int j=0;j<lowerLimits.length;j++) {
+				int maxUpperLimit = 0;
+				if(j>= upperLimits.length)
+					maxUpperLimit = scores[scores.length-1];
+				else 
+					maxUpperLimit = upperLimits[j];
+				
+				System.out.println("Score "+scores[i]+" LowerLimit : "+lowerLimits[j]+" UpperLimit : "+maxUpperLimit);
+				if(scores[i] >= lowerLimits[j] && scores[i] <=maxUpperLimit)
+					offers[j] =offers[j]+1;
+			}
+		}
+		
+		for(int i=0;i<offers.length;i++) {
+			System.out.print(offers[i]+" ");
+		}
+		
+		return offers;
+	}
 
-        for(int i = 0;i < lowerLimits.length; i++) {
-            int count = 0;
-
-            int lowerRangeElementIndex = search(scores, 0, scores.length, lowerLimits[i]);
-            int upperRangeElementIndex = search(scores, 0, scores.length, upperLimits[i]);
-            if (scores[lowerRangeElementIndex] == lowerLimits[i] || (lowerRangeElementIndex == 0 && scores[lowerRangeElementIndex] > lowerLimits[i]))
-                lowerRangeElementIndex--;
-            count = upperRangeElementIndex - lowerRangeElementIndex ;
-
-            output[i] = count;
-        }
-        return output;
-    }
-
-    static int search(int[] scores, int lower, int upper, int key)
-    {
-        if (lower >= upper)
-            return lower;
-        int mid = (lower + upper)/2;
-        if (scores[mid] == key)
-            return mid;
-        if (scores[mid] > key)
-            return search(scores, lower, mid-1, key);
-        else {
-            if (upper - mid == 1) {
-                if(scores[upper] <= key)
-                    return upper;
-                else
-                    return mid;
-            }
-            return search(scores, mid, upper, key);
-        }
-    }
-    public static void main(String args[]){
-        int[] scores = {1, 3, 5, 6, 8};
-        int[] lowerLimits={2};
-        int[] upperLimits={6};
-
-        int[] jobsHolder = jobOffers(scores,lowerLimits,upperLimits);
-        for(int x : jobsHolder){
-            System.out.println(x);
-        }
-    }
 }
