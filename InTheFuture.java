@@ -5,7 +5,13 @@
 public class InTheFuture {
 
     static int minNum(int A, int K, int P){
-        return P/(K-A)+1;
+         static int minNum(int A, int K, int P){
+        int min = (K-A)+1;
+        if(min != 0){
+            return P/(K-A)+1;
+        }
+        else
+            return -1;    
     }
     public static void main(String[] args) {
         int asha = 4;
