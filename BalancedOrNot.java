@@ -3,22 +3,22 @@
  */
 import java.util.*;
 public class BalancedOrNot {
-    static int[] balancedOrNot(String[] expressions, int[] maxReplacements) {
-        int[] ans = new int[maxReplacements.length];
-        for(int i=0; i<expressions.length;i++){
-            ans[i] = Checker(expressions[i], maxReplacements[i]);
+     static int[] balancedOrNot(String[] expressions, int[] maxReplacements){
+        int[] results = new int[expressions.length];
+        for(int i = 0; i < expressions.length; i++){
+            results[i] = helper(expressions[i], maxReplacements[i]);
         }
-        return ans;
+        return results;
     }
 
-    static int Checker(String expression, int maxReplacement){
+    public static int helper(String expression, int maxReplacement){
         Stack<Character> stack = new Stack<Character>();
         int count = 0;
         for(char ch : expression.toCharArray()){
             if(ch == '<'){
-                stack.push('<');
+                stack.push('>');
             }
-            else if(stack.empty()){
+            else if(stack.isEmpty()){
                 count++;
             }
             else{
@@ -26,17 +26,15 @@ public class BalancedOrNot {
             }
         }
 
-        if(!stack.empty()){
-            count+= stack.size();
-        }else{
-            return 0;
+        if(!stack.isEmpty()){
+            count += stack.size();
         }
         return count <= maxReplacement ? 1 : 0;
     }
     //driver
     public static void main(String[] args)
     {
-        String[] input = {"<<<><><>", "<><>>"};
+        String[] input = {"<<<><><>", "<><>>"}; //<> > <>
         int[] in = {2, 2};
         int[] res = balancedOrNot(input, in);
         for(int i : res){
