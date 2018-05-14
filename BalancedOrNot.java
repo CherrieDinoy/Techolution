@@ -2,7 +2,7 @@
  * Created by cd185134 on 5/14/2018.
  */
 import java.util.*;
-public class Balanceornot {
+public class BalancedOrNot {
     static int[] balancedOrNot(String[] expressions, int[] maxReplacements) {
         int[] ans = new int[maxReplacements.length];
         for(int i=0; i<expressions.length;i++){

@@ -2,7 +2,7 @@
  * Created by cd185134 on 5/14/2018.
  */
 import java.util.*;
-public class Buyingshowticket {
+public class BuyingShowTickets {
     static long waitingTimes( int[] tickets, int p) {
         long times = 0;
         int[] temp = Arrays.copyOf(tickets, tickets.length);
