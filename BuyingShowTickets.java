@@ -3,7 +3,7 @@
  */
 import java.util.*;
 public class BuyingShowTickets {
-    static long waitingTimes( int[] tickets, int p) {
+    static long waitingTime( int[] tickets, int p) {
         long times = 0;
         int[] temp = Arrays.copyOf(tickets, tickets.length);
         for(int i = 0; i < tickets.length; i++ ) {
@@ -23,7 +23,7 @@ public class BuyingShowTickets {
     {
         int[] input = {1,2,5};
         int in =1;
-        long res = waitingTimes(input, in);
+        long res = waitingTime(input, in);
 
         System.out.println(res);
 
