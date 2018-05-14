@@ -1,8 +1,12 @@
 /**
- * Created by cd185134 on 5/14/2018.
+ * Created by Cherrie Mae Dinoy on 5/14/2018.
  */
 
 public class ConsecutiveSum {
+    /*
+    Given a long integer, num, find the number of ways to represent it as a sum of two or
+    more consecutive positive integers.
+     */
     static int consecutive(long num)
     {
         int count = 0;
