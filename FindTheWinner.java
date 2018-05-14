@@ -13,23 +13,33 @@ public class FindTheWinner {
     }
 
 
-    static String winner(int[] andrea , int[] maria, String s){
-        int aScore = 0;
-        int mScore = 0;
-        for (int i = 0; i < andrea.length; i++) {
-            if (s == "Even" && i % 2 == 0) {
-                aScore += andrea[i] - maria[i];
-                mScore += maria[i] - andrea[i];
-            }
-            if (s == "Odd" && Math.abs(i % 2) == 1) {
-                aScore += andrea[i] - maria[i];
-                mScore += maria[i] - andrea[i];
-            }
-        }
-        if (aScore > mScore)
-            return "Andrea";
-        if (aScore < mScore)
-            return "Maria";
-        return "Tie";
-    }
+    public static String winner(int[] andrea, int[] maria,String s) {
+		int startIndex = s.equalsIgnoreCase("even")? 0 : 1;
+		
+		int mariaPoint = 0;
+		int andreaPoint = 0;
+		
+		int maxLength = andrea.length > maria.length ? andrea.length : maria.length;
+		
+		int[] andreaFinal = new int[maxLength];
+		int[] mariaFinal = new int[maxLength];
+		
+		System.arraycopy(andrea, 0, andreaFinal, 0, andrea.length);
+		System.arraycopy(maria, 0, mariaFinal, 0, maria.length);
+
+		for(int i=startIndex;i<maxLength;i = i+2) {
+			andreaPoint += (andreaFinal[i]-mariaFinal[i]);
+			mariaPoint += (mariaFinal[i] - andreaFinal[i]);
+		}
+		
+		System.out.println("Andrea points : "+andreaPoint);
+		System.out.println("Maria points : "+mariaPoint);
+		
+		if(andreaPoint > mariaPoint)
+			return "Andrea";
+		else if ( mariaPoint > andreaPoint)
+			return "Maria";
+		else
+			return "Tie";
+	}
 }
