@@ -5,7 +5,6 @@
 public class InTheFuture {
 
     static int minNum(int A, int K, int P){
-         static int minNum(int A, int K, int P){
              int min = -1;
                 if(K != 0 || A != 0){
                     min = P/(K-A)+1;
